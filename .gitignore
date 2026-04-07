@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+TESTING.md
+
+# claude code
+.claude
+CLAUDE.md
+
+# swc cache
+.swc

@@ -12,15 +12,48 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+select,
+textarea {
+  background: white;
+  color: rgb(66, 66, 66);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(93, 93, 93);
+}
+
+table {
+  color: var(--foreground);
+}
+
+table a:not(.btn) {
+  color: #1d70b8;
+  text-decoration: underline;
+}
+
+table a.btn {
+  color: white;
+  text-decoration: none;
+}
+
+dl {
+  color: var(--foreground);
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
 }
