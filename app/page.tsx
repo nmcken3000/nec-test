@@ -1,32 +1,69 @@
-import Image from "next/image";
+"use client";
+import { mockUsers } from "@/lib/mockUsers";
+import Link from "next/link";
 
-export default function Home() {
+/*
+If I was to fetch real data, I would do it like this:
+export default async function UsersListingPage() {                                                                                                                                                                      
+    const res = await fetch('https://api.example.com/users')                                                                                                                                                       
+    const users = await res.json()                                                                                                                                                                                 
+                                                                                                                                                                                                                   
+    return (                                                                                                                                                                                                     
+      <ul>
+        {users.map((user) => (                                                                                                                                                                                     
+          <li key={user.id}>
+            <Link href={`/users/${user.id}`}>{user.fullName}</Link>
+          </li>
+        ))}                                                                                                                                                                                                        
+      </ul>                                                                                                                                                                                                      
+    )
+  }
+
+*/
+
+export default function UsersListingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-5xl font-bold text-center sm:text-left">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+    <main className="min-h-screen bg-gray-50 py-12 px-4">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow p-8">
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">Users Listing</h1>
+        <p className="text-gray-600">This page will display a list of users.</p>
 
-        <p className="mt-3 text-2xl text-center sm:text-left">
-          Get started by editing{" "}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            app/page.tsx
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="w-96 mt-6 sm:w-full flex flex-col items-center justify-center text-center no-underline rounded-xl border border-gray-200 dark:border-gray-700 p-4 transition hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-        </div>
-      </main>
-    </div>
+        <table className="w-full mt-6 table-auto">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="py-2 px-4 text-left">Full Name</th>
+              <th className="py-2 px-4 text-left">Age</th>
+              <th className="py-2 px-4 text-left">Country</th>
+              <th className="py-2 px-4 text-left">Interests</th>
+              <th className="py-2 px-4 text-left">View Details</th>
+            </tr>
+          </thead>
+          {mockUsers.map((user) => (
+            <tr key={user.id} className="border-t">
+              <td className="py-2 px-4">
+                <Link href={`/users/profile/${user.id}`}>{user.fullName}</Link>
+              </td>
+              <td className="py-2 px-4">{user.age}</td>
+              <td className="py-2 px-4">{user.country}</td>
+              <td className="py-2 px-4">{user.interests.join(", ")}</td>
+              <td className="py-2 px-4">
+                <Link
+                  className="btn inline-block bg-blue-600 text-white rounded-md mt-6 py-2 px-4 text-sm font-medium hover:bg-blue-700"
+                  href={`/users/profile/${user.id}`}
+                >
+                  View Details
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </table>
+        <Link
+          href="/users/new"
+          className="inline-block bg-blue-600 text-white rounded-md mt-6 py-2 px-4 text-sm font-medium hover:bg-blue-700"
+        >
+          Add New User
+        </Link>
+      </div>
+    </main>
   );
 }

@@ -38,6 +38,8 @@ User data is stored in memory as a plain array in `lib/mockUsers.ts`. There is n
 
 In a production version of this app, I would use Zustand to manage global user state. This would allow users added via the form to be persisted in memory across pages (list, profile), and would make add, edit, and delete operations straightforward to implement. Redux was considered but felt like unnecessary overhead for an app of this size — it is better suited to large applications with complex state interactions and teams that need strict, predictable patterns.
 
+It is worth noting that Zustand alone is not sufficient for real persistence — it is in-memory state and is lost on page refresh. In a production app, form submissions would be sent to a Next.js API route (`app/api/`), which would write to a database. Zustand would then act as a client-side cache of that data, keeping the UI fast and avoiding unnecessary refetches between page navigations. The database remains the source of truth.
+
 ### Styling
 
 Tailwind CSS (v4) is used for styling. It is already configured in the project and allows styling directly in the markup without writing separate CSS files.
