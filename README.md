@@ -16,7 +16,7 @@ Run the dev server:
 npm run dev
 ```
 
-Open [http://localhost:3000/users/new](http://localhost:3000/users/new) to see the form.
+Open [http://localhost:3000/users](http://localhost:3000/users) to view the app. From there you can navigate to the user list, add a new user via [http://localhost:3000/users/new](http://localhost:3000/users/new), and view individual profiles.
 
 ## Libraries Used
 

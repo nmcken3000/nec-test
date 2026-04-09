@@ -18,7 +18,6 @@ export default async function UsersListingPage() {
       </ul>                                                                                                                                                                                                      
     )
   }
-
 */
 
 export default function UsersListingPage() {
@@ -41,7 +40,7 @@ export default function UsersListingPage() {
           {mockUsers.map((user) => (
             <tr key={user.id} className="border-t">
               <td className="py-2 px-4">
-                <Link href={`/users/profile/${user.id}`}>{user.fullName}</Link>
+                <Link href={`/users/${user.id}`}>{user.fullName}</Link>
               </td>
               <td className="py-2 px-4">{user.age}</td>
               <td className="py-2 px-4">{user.country}</td>
@@ -49,7 +48,7 @@ export default function UsersListingPage() {
               <td className="py-2 px-4">
                 <Link
                   className="btn inline-block bg-blue-600 text-white rounded-md mt-6 py-2 px-4 text-sm font-medium hover:bg-blue-700"
-                  href={`/users/profile/${user.id}`}
+                  href={`/users/${user.id}`}
                 >
                   View Details
                 </Link>
