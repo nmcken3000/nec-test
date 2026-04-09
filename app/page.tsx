@@ -2,7 +2,7 @@
 import { mockUsers } from "@/lib/mockUsers";
 import Link from "next/link";
 
-/*
+/* DEMO PURPOSES ONLY -
 If I was to fetch real data, I would do it like this:
 export default async function UsersListingPage() {                                                                                                                                                                      
     const res = await fetch('https://api.example.com/users')                                                                                                                                                       
